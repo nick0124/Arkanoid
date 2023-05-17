@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    enum Bonus{
+    enum Bonus
+    {
         None,
         Life,
         RacketSize,
@@ -15,24 +14,28 @@ public class Block : MonoBehaviour
         BigBall,
         Smallball
     }
+    [SerializeField]private Bonus bonus;
 
-    [SerializeField]
-    private Bonus bonus;
+    [SerializeField]private BlocksController blocksController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("hit");
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy() {
+        blocksController.UpdateBlocksCount();
     }
 }
