@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField]private BlocksController blocksController;
-
+    public GameManager gameManager{set; private get;}
     private bool isStarted;
-    public Transform ballSpawnPos;
+
 
     [SerializeField]private float speed;
     private Rigidbody2D rb;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        //StartImpulse();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonUp(0) && isStarted == false){
-            isStarted = true;
+        if(Input.GetMouseButtonUp(0) && this.isStarted == false){
+            this.isStarted = true;
             StartImpulse();
         }
     }
 
     private void FixedUpdate()
     {
-        if (isStarted == false)
-            transform.position = ballSpawnPos.position;
+
     }
 
     private void StartImpulse()
@@ -43,12 +42,14 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.tag == "Floor"){
             Destroy(gameObject);
-            Debug.Log("failure");
+            this.gameManager.UpdateBallsCount();
+            //проверяем количество мячей на экране, если меньше 0 отнимаем жизнь
             //отнимаем жизнь
             //проверяем количество жизней, если меньше нуля проигрыш
         }
 
         if(other.transform.tag == "Block"){
+            this.gameManager.UpdateBlocksCount();
             //прибавляем множитель очков
             //прибавляем очки
             //проверяем прошли ли игру

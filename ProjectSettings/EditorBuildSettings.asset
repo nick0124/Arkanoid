@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: b1025f013b28feb43b9461416be57aa6
+  - enabled: 1
+    path: Assets/Scenes/GamePC.unity
+    guid: df17c15176c48ea41b4939da75c47b18
+  - enabled: 1
     path: Assets/Scenes/GmeMobile.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 5c6f154d3730bb04ca37aec72f49364f
   m_configObjects: {}

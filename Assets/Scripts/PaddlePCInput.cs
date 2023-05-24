@@ -65,8 +65,7 @@ public class PaddlePCInput : MonoBehaviour
             Vector2 contactPoint = coll.GetContact(0).point;
 
             float offset = paddlePos.x - contactPoint.x;
-            float width = coll.otherCollider.bounds.size.x / (2 * coll.transform.lossyScale.x);
-            Debug.Log(width);
+            float width = coll.otherCollider.bounds.size.x / 2;
 
             float currAngle = Vector2.SignedAngle(Vector2.up, ballRb.velocity);
             float bounceAngle = (offset / width) * maxBounceAngle;
